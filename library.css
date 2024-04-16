@@ -1,0 +1,122 @@
+:root{
+
+}
+
+
+
+body {
+    box-sizing: border-box;
+
+
+    width: 100%;
+    font-size: 1.2rem;
+    font-display: none;
+    line-height: 1.9rem;
+
+}
+
+.bookstorage{
+
+    display:grid;
+    grid-template-columns: repeat(3, 3fr);
+    justify-content: space-between;
+    width: 100%;
+
+
+}
+
+.heading{
+
+    margin-bottom: 4rem;
+    text-align: center;
+    font-size: 3.4rem;
+    line-height: 3.6rem;
+
+
+}
+.bookstore{
+
+    display:none;
+    width:20%;
+    flex-direction: column;
+    background-color: rgb(209, 129, 31);
+    position: absolute;
+    top:0;
+    right: 0;
+    margin-left: auto;
+
+    min-height: 100vh;
+    text-align: center;
+}
+
+
+ul {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 3rem 1rem;
+    list-style-type: none;
+    margin-top: 10rem;
+
+    background-color: rgb(193, 192, 179);    
+
+
+}
+
+.btnBooks{
+    position: sticky;
+    bottom: 0;
+
+}
+
+
+button {
+
+    padding: 1rem;
+    border-radius: 1.5 rem;
+
+}
+
+dialog {
+    width: 20rem; 
+}
+
+form{
+    display: grid;
+    gap: .2rem;
+}
+
+.btn2{
+
+    margin-top: .5rem;
+
+}
+
+
+
+footer > section{
+    display: flex;
+    
+}
+
+footer ul {
+
+    display: block;
+    width:100%;
+    margin: 0;
+
+
+}
+
+
+footer li {
+
+    padding: .5rem;
+    width:max-content;
+
+
+}
+
+
+

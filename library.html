@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <html lang="en">
+    <meta charset="UTF-8">
+
+    <meta name="description" content="150 words" />
+    <meta name="subject" content="your website's subject">
+    <meta name="copyright" content="company name">
+    <meta name="language" content="ES">
+    <meta name="robots" content="index,follow" />
+
+    <meta property="og:title" content="European Travel Destinations">
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Offering tour packages for individuals or groups.">
+    <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
+    <meta property="og:url" content="http://euro-travel-example.com/index.htm">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Page Title</title>
+
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="library.css">
+</head>
+
+
+
+
+<body>
+    <header>
+        <h1 class="heading">Your book library</h1>
+    </header>
+
+
+    <main>
+          <div class="bookstore">
+                <img src="" class="bookstore__bookcover">
+                <h3 class="bookstore__heading"></h3>
+                <p class= "bookstore__author"></p>
+                <div>
+                    <button></button>
+                    <button></button>
+                </div>
+            </div> 
+
+        </div>
+
+        <section class="bookstorage">
+        </section>  
+        <ul class="btnBooks">
+            <li>
+                <button class="Btn">Add book</button>
+                <dialog id="modal">
+                    <p>Input new author and Book~</p>
+                    <form method="dialog" id="book1">
+
+                        <label for="bookTitle">Book Name:</label>
+                        <input type="text" name="bookTitle" required>
+
+                        <label for="bookAuthor">Author:</label>
+                        <input type="Text" name="bookAuthor" required>
+
+                        <label for="pageNo">Amount of pages:</label>
+                        <input type="number" inputmode="numeric" name="pageNo" minlength="1" required>
+
+                        <label for="FrontPage">Front Page:</label>
+                        <input type="file" name="FrontPage" accept="image" required>
+
+                        <label for="tags">Tags:</label>
+                        <input type="text" name="tags">
+
+                        <button class="btn2" type="submit">Submit</button>
+                    </form>
+
+                </dialog>
+            </li>
+            <li>
+                <button class="showBooks">Show books</button>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <section>
+            <ul>
+                <li class="Tre">Contact</li>
+                <li class="Tre">Shipping</li>
+                <li class="Tre">Privacy policies</li>
+                <li class="Tre">FAQ</li>
+            </ul>
+            <ul>
+                <li class="Tre">Terms of Use</li>
+                <li class="Tre">Careers</li>
+                <li class="Tre">philosophy</li>
+                <li class="Tre">HR</li>
+            </ul>
+            <ul>
+                <li class="Tre">Newsletter</li>
+                <li class="Tre">Money back guarantee</li>
+                <li class="Tre">Help</li>
+                <li class="Tre">Support</li>
+            </ul>
+
+        </section>
+    </footer>
+
+
+
+
+</body>
+<script>
+
+    let booklibrary = [
+    { Author: 'JK rowling', Title: 'Harry potter', PagesNo: '32', Read: false, BookCover: 'k.png' } ,
+    { Author: 'JK rowlingsss', Title: 'Harry potterss', PagesNo: '322', Read: false, BookCover: 'k.png' },
+    { Author: 'JK rowling', Title: 'Harry potter', PagesNo: '32', Read: false, BookCover: 'k.png' },
+    { Author: 'JK rowling', Title: 'Harry potter', PagesNo: '32', Read: false, BookCover: 'k.png' },
+    { Author: 'JK rowling', Title: 'Harry potter', PagesNo: '32', Read: false, BookCover: 'k.png' },
+    { Author: 'JK rowling', Title: 'Harry potter', PagesNo: '32', Read: false, BookCover: 'k.png' }]
+
+// Adding a book:
+
+
+
+
+
+    const bookData = document.getElementById('book1');
+
+    bookData.addEventListener('submit', e => {
+        e.preventDefault()
+        const data = new FormData(e.target);
+        const Book = addnewBooks(...data.values())
+        booklibrary.push(Book);
+        popup.close();
+        // Need to clear the form after clicking a second time
+        console.log(booklibrary);
+
+
+    })
+
+    function addnewBooks(title, author, pagesNo, bookCover) {
+
+        const Title = title;
+        const Author = author;
+        const PagesNo = pagesNo;
+        const BookCover = bookCover;
+        const Read = false;
+
+        // learn correct naming for factory functions
+
+
+        return { Author, Title, PagesNo, Read, BookCover }
+        // author, title, number of pages, whether it’s been read and anything else you might want
+    }
+
+
+//Modal close/open settings: 
+
+    const newModal = document.querySelector(".Btn")
+    const popup = document.querySelector("#modal")
+
+
+
+    newModal.addEventListener('click', () => {
+        popup.showModal()
+    });
+
+
+// Showing books:
+
+    const showBookBtn = document.querySelector('.showBooks')
+    showBookBtn.addEventListener('click', function showBooks() {
+
+        const bookstorage = document.querySelector('.bookstorage');
+        bookstorage.replaceChildren()
+
+
+        for (let i = 0; i < booklibrary.length; i++) {
+
+
+
+            let newDiv = document.createElement('div');
+            newDiv.className = 'bookstorage__books'
+            bookstorage.appendChild(newDiv);
+            Object.assign(newDiv, booklibrary[i])
+            newDiv.source_data = booklibrary[i]
+
+            
+
+            // retrieve e, e then displays or it finds the index of the post on the array
+            // then displays content based on it.
+
+            let newimg = document.createElement('img');
+            const imginput = newDiv.appendChild(newimg);
+            imginput.src = booklibrary[i].BookCover;
+            
+
+            const headingtext = document.createElement('h3');
+            const headinginput = newDiv.appendChild(headingtext);
+            headinginput.innerText = booklibrary[i].Title;
+
+            const Authortext = document.createElement('p');
+            const Authorinput = newDiv.appendChild(Authortext);
+            Authorinput.innerText = booklibrary[i].Author;
+
+            // add library module? ig with 
+
+            // put this on the front cover, use css for grid
+
+        }
+
+    const books = [...document.querySelectorAll('.bookstorage__books')]
+    
+    books.forEach(element => {
+       element.addEventListener('click', e => {
+    
+        
+    const sidebar = document.querySelector('.bookstore')
+    const img = document.querySelector('.bookstore__bookcover')
+    const heading = document.querySelector('.bookstore__heading')
+    const Authortext = document.querySelector('.bookstore__author')
+
+    
+    img.src = e.target.bookCover;
+
+    heading.innerText = e.target.Title;
+
+    Authortext.innerText = e.target.Author;
+
+    sidebar.style.display = 'flex'
+    bookstorage.style.width = '80%'
+
+    // Need one sidebar made that displays already made
+    
+})
+        
+    });
+
+
+    
+
+
+
+
+
+    }
+    );
+
+
+
+
+
+// Read button
+
+    // btnread.addeventlistener('click or submit',function truefalse(e){
+            
+    //     if (object.read === true){
+    //         object.read === false;
+    //     } else{
+    //         object.read === true;
+    //     }
+    // })
+
+    // Delete book
+
+    //btndelete.addeventlistener('click or submit', e => bookstorage.pop(e.target or e))
+    //then use read button function  
+
+
+// Display sidebar
+
+</script>
+
+</html>
